@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WebviewTest</string>
+    <string name="spin">Spin</string>
+    <string name="score">Score: %d</string>
+    <string name="start">Start</string>
+    <string name="load_image">Load image</string>
+</resources>

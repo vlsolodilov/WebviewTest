@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.webviewtest.screen.start.StartFragment"
+        android:label="StartFragment"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_wheelFragment"
+            app:destination="@id/wheelFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_webviewActivity"
+            app:destination="@id/webviewActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/wheelFragment"
+        android:name="com.example.webviewtest.screen.wheel.WheelFragment"
+        android:label="WheelFragment"
+        tools:layout="@layout/fragment_wheel"/>
+    <activity
+        android:id="@+id/webviewActivity"
+        android:name="com.example.webviewtest.screen.webview.WebviewActivity"
+        android:label="activity_webview"
+        tools:layout="@layout/activity_webview">
+        <argument
+            android:name="url"
+            app:argType="string"
+            app:nullable="true"/>
+    </activity>
+</navigation>

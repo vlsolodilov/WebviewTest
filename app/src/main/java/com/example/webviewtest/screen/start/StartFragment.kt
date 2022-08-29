@@ -16,8 +16,6 @@ class StartFragment : Fragment() {
     private val binding
         get() = _binding ?: throw RuntimeException("FragmentStartBinding is null")
 
-    private lateinit var viewModel: StartViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,11 +23,7 @@ class StartFragment : Fragment() {
     ): View {
         _binding = FragmentStartBinding.inflate(layoutInflater, container, false)
 
-        viewModel = ViewModelProvider(this,
-            StartViewModel.Factory(requireActivity().application))[StartViewModel::class.java]
-
         initViews()
-        observeViewModel()
 
         return binding.root
     }
@@ -37,24 +31,12 @@ class StartFragment : Fragment() {
     private fun initViews() {
 
         binding.start.setOnClickListener {
-            viewModel.initPushNotification()
             startWheelFragment()
-        }
-    }
-
-    private fun observeViewModel() {
-        viewModel.url.observe(viewLifecycleOwner) { url: String? ->
-            url?.let { startWebviewActivity(it) }
         }
     }
 
     private fun startWheelFragment() {
         findNavController().navigate(R.id.action_startFragment_to_wheelFragment)
-    }
-
-    private fun startWebviewActivity(url: String) {
-        val action = StartFragmentDirections.actionStartFragmentToWebviewActivity(url)
-        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
